@@ -1,0 +1,5 @@
+venv/
+.venv/
+exports/
+__pycache__/
+hf_home/
