@@ -15,9 +15,9 @@
   "original_text": "1. Use clear variable names and avoid unnecessary whitespace.  \n2. Add comments where necessary to explain complex logic.",
   "exported_text": "1. Use clear variable names and avoid unnecessary whitespace.  \n2. Add comments where necessary to explain complex logic.",
   "single_run_our_cpu": {
-    "export_seconds": 24.2,
-    "greedy_loop_seconds_no_kv_cache": 3.2,
-    "peak_rss_mb": 7774
+    "export_seconds": 24.7,
+    "greedy_loop_seconds_no_kv_cache": 4.8,
+    "peak_rss_mb": 7444
   },
   "openvino_inference_precision": "<Type: 'float32'>"
 }

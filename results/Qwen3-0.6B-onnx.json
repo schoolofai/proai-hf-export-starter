@@ -7,7 +7,7 @@
   "files_bytes": {
     "config.json": 1417,
     "export.json": 1784,
-    "model.onnx": 4507375,
+    "model.onnx": 5104455,
     "model.onnx.data": 2384199680
   },
   "max_abs_logit_diff_vs_original": 8.317828178405762e-05,
@@ -15,8 +15,8 @@
   "original_text": "1. Use clear variable names and avoid unnecessary whitespace.  \n2. Add comments where necessary to explain complex logic.",
   "exported_text": "1. Use clear variable names and avoid unnecessary whitespace.  \n2. Add comments where necessary to explain complex logic.",
   "single_run_our_cpu": {
-    "export_seconds": 43.5,
-    "greedy_loop_seconds_no_kv_cache": 3.1,
-    "peak_rss_mb": 5887
+    "export_seconds": 43.8,
+    "greedy_loop_seconds_no_kv_cache": 3.6,
+    "peak_rss_mb": 5890
   }
 }

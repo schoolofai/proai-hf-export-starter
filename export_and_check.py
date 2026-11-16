@@ -16,7 +16,7 @@ EXPORTERS = {
 
 def main(backend):
     args = parse_args()
-    model, tok, revision = load(args.model)
+    model, tok, revision = load(args.model, args.revision)
     inputs = chat_inputs(tok, args.prompt)
     out = Path(args.out) / f"{args.model.split('/')[-1]}-{backend}"
 

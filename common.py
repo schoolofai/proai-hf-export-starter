@@ -4,10 +4,10 @@ import json
 from pathlib import Path
 
 import torch
-from huggingface_hub import model_info
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 DEFAULT_MODEL = "Qwen/Qwen3-0.6B"
+DEFAULT_REVISION = "c1899de289a04d12100db370d81485cdf75e47ca"  # the Qwen3-0.6B commit we tested
 DEFAULT_PROMPT = "Give two tips for writing readable Python code, in two short sentences."
 
 
@@ -16,6 +16,8 @@ def parse_args(extra=None):
     if extra:
         extra(ap)
     ap.add_argument("--model", default=DEFAULT_MODEL)
+    ap.add_argument("--revision", default=DEFAULT_REVISION,
+                    help="model commit to load (pinned for Qwen3-0.6B); pass --revision main if you change --model")
     ap.add_argument("--prompt", default=DEFAULT_PROMPT)
     ap.add_argument("--out", default="exports")
     ap.add_argument("--max-new-tokens", type=int, default=48)
@@ -24,9 +26,8 @@ def parse_args(extra=None):
     return ap.parse_args()
 
 
-def load(model_id):
+def load(model_id, revision=DEFAULT_REVISION):
     """Load the original PyTorch model. Use sdpa attention: FlashAttention and FlexAttention don't export."""
-    revision = model_info(model_id).sha  # pin the exact commit; public model, no token needed
     tok = AutoTokenizer.from_pretrained(model_id, revision=revision)
     model = AutoModelForCausalLM.from_pretrained(
         model_id, revision=revision, attn_implementation="sdpa", dtype=torch.float32

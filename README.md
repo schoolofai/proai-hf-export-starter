@@ -7,7 +7,7 @@ and generate text with it.
 This is the code from the ProAI Clips video on exporting Hugging Face models (video link coming soon).
 
 - Model: [Qwen/Qwen3-0.6B](https://huggingface.co/Qwen/Qwen3-0.6B) (Apache-2.0, public, no token needed),
-  pinned to revision `c1899de289a04d12100db370d81485cdf75e47ca`.
+  pinned to revision `c1899de289a04d12100db370d81485cdf75e47ca` (`--revision`; pass `--revision main` if you use a different `--model`).
 - Runs on a plain CPU. No GPU and no API keys.
 - Docs this follows: [Transformers exporters](https://huggingface.co/docs/transformers/main/en/exporters).
 
@@ -109,7 +109,7 @@ The full results of our runs are in [`results/`](results/).
   have to orchestrate yourself.
 - **If you just want to chat with a model on your laptop,** use [llama.cpp](https://github.com/ggml-org/llama.cpp)
   with a GGUF file.
-- **Size:** the exports are float32, about 2.38 GB of weights for this 0.6B model.
+- **Size:** each export folder is about 2.39 GB, because the weights are stored in float32.
 
 ## Gotchas
 - **Use `sdpa` attention.** FlashAttention and FlexAttention are not exportable on any backend (docs).
@@ -120,7 +120,7 @@ The full results of our runs are in [`results/`](results/).
   config option is gone in favour of `save_pretrained`
   ([release notes](https://github.com/huggingface/transformers/releases/tag/v5.23.0)).
 - **Timings.** `results/*.json` holds one timed run on our CPU (8 vCPU Intel Xeon), for example
-  ONNX export 43.5 s and OpenVINO export 24.2 s. They come from a single run on our CPU and are not benchmarks.
+  ONNX export 43.8 s and OpenVINO export 24.7 s (the run shown in the video). They come from a single run on our CPU and are not benchmarks.
 
 ## Files
 | File | What it does |

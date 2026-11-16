@@ -13,7 +13,7 @@ from common import chat_inputs, greedy, load, max_logit_diff, openvino_load_opti
 
 args = parse_args(lambda ap: ap.add_argument("export_dir", type=Path))
 backend = json.loads((args.export_dir / "export.json").read_text())["export_format"]
-model, tok, _ = load(args.model)
+model, tok, _ = load(args.model, args.revision)
 inputs = chat_inputs(tok, args.prompt)
 
 options = openvino_load_options(args.ov_precision) if backend == "openvino" else {}
